@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}ZipTest App - Bot{% endblock %}
+
+{% block page_content %}
+<h4 id="comments">Postal code</h4>
+<div class="comment-form">
+    {{ wtf.quick_form(form) }}
+</div>
+{% endblock %}
