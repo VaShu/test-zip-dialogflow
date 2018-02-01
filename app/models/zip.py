@@ -16,7 +16,7 @@ class Zip(db.Model):
     def to_json(self):
         json_zip = {
             'url':
-                url_for('api.get_zip', id=self.id, _external=True),
+                url_for('api.get_zip', postal_code=self.postal_code, _external=True),
             'postal_code':
                 self.postal_code,
             'latitude':
