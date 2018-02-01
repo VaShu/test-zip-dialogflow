@@ -5,7 +5,14 @@
 
 {% block page_content %}
 <h4 id="comments">DialogFlow</h4>
-<div class="comment-form">
-    {{ wtf.quick_form(form) }}
-</div>
+    <div class="comment-form">
+        {{ wtf.quick_form(form) }}
+    </div>
+    <div>
+        <iframe
+            width="350"
+            height="430"
+            src="https://console.dialogflow.com/api-client/demo/embedded/7055e64a-6c22-42ff-89a4-02d10586f01f">
+        </iframe>
+    </div>
 {% endblock %}

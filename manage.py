@@ -2,7 +2,7 @@ import os
 
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager, Shell, Server
-from app.models import Comment, Zip
+from app.models import Zip
 
 from app import create_app, db
 
@@ -20,7 +20,7 @@ manager = Manager(app)
 
 
 def make_shell_context():
-    return dict(app=app, db=db, Comment=Comment, Zip=Zip)
+    return dict(app=app, db=db, Zip=Zip)
 
 
 @manager.command
