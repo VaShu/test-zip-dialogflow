@@ -3,13 +3,15 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'VerySecretTextForTask'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or '1d94e52c-1c89-4515-b87a-f48cf3cb7f0b'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data.sqlite3')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     POSTS_PER_PAGE = 5
     FOLLOWERS_PER_PAGE = 50
     COMMENTS_PER_PAGE = 30
+    LOGGING_PATH = 'logs/app.log'
+#    LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 
     @staticmethod
     def init_app(app):
