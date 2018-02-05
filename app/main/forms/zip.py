@@ -4,5 +4,5 @@ from wtforms.validators import DataRequired
 
 
 class ZipForm(FlaskForm):
-    body = StringField("What's on your mind?", validators=[DataRequired()])
-    submit = SubmitField('Submit')
+    postal_code = StringField("Enter zip code", validators=[DataRequired()])
+    submit = SubmitField('Search')
