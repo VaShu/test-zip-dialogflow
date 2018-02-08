@@ -3,7 +3,7 @@ from app import db
 
 
 class Zip(db.Model):
-    __tablename__ = 'zips'
+    __tablename__ = 'postzip'
 
     id = db.Column(db.Integer, primary_key=True)
     postal_code = db.Column(db.String(64))
@@ -25,7 +25,6 @@ class Zip(db.Model):
                 self.longitude,
         }
         return json_zip
-
 
     def __repr__(self):
         return '<Postal Code %r>' % self.postal_code

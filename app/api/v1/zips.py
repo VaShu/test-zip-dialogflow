@@ -5,5 +5,9 @@ from app.models import Zip
 
 @api.route('/zips/<string:postal_code>')
 def get_zip(postal_code):
-    zip = Zip.query.get_or_404(postal_code)
-    return jsonify(zip.to_json())
+    zip = Zip.query.filter_by(postal_code=postal_code).first()
+    if zip is not None:
+        return jsonify(zip.to_json())
+    else:
+        msg = {"msg": " zip code not found"}
+        return jsonify(msg)

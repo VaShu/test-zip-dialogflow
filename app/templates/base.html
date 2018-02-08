@@ -23,28 +23,10 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Zip <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-{#                        <li><a href="{{ url_for('zip.iframe') }}">iFrame</a></li>#}
-{#                        <li><a href="{{ url_for('zip.api') }}">Api</a></li>#}
-                        <li><a href="#">iFrame</a></li>
-                        <li><a href="#">Api</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Bot <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('main.bot_frame') }}">iFrame</a></li>
-                        <li><a href="{{ url_for('main.bot_api') }}">Api</a></li>
-{#                        <li><a href="#">iFrame</a></li>#}
-{#                        <li><a href="#">Api</a></li>#}
-                    </ul>
-                </li>
+                <li><a href="{{ url_for('main.zip') }}">Zip code</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('main.bot') }}">DialogFlow</a></li>
             </ul>
         </div>
     </div>

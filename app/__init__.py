@@ -16,10 +16,18 @@ def create_app(config_name):
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
 
+    # todo delete after end
+    app.debug = True
+    app.use_debugger = False
+    app.use_reloader = False
+
+    # app.debug = False
+    # app.threaded = True
+
     bootstrap.init_app(app)
     db.init_app(app)
-    enable_file_logging(app)
-    app.logger.info("Logging is set up.")
+    init_logging(app)
+    app.logger.info("Init logging.")
 
     # import blueprint
     from .main import main as main_blueprint
@@ -31,9 +39,9 @@ def create_app(config_name):
 
     return app
 
-def enable_file_logging(app):
+def init_logging(app):
 
-    logging_path = app.config['LOGGING_PATH']
+    log_path = app.config['LOGGING_PATH']
 
     # The maxBytes is set to this number, in order to demonstrate the generation of multiple log files (backupCount).
     # handler = RotatingFileHandler('logs/app.log', maxBytes=10000, backupCount=3)
@@ -49,11 +57,10 @@ def enable_file_logging(app):
     'W0'-'W6' 	Weekday (0=Monday)
     'midnight' 	Roll over at midnight
     """
-    handler = TimedRotatingFileHandler(logging_path, when='H', interval=1, backupCount=0)
+    handler = TimedRotatingFileHandler(log_path, when='midnight', interval=1, backupCount=0)
 
     # getLogger('__name__') - decorators loggers to file / werkzeug loggers to stdout
     # getLogger('werkzeug') - werkzeug loggers to file / nothing to stdout
     logging.getLogger('__name__')
     handler.setLevel(logging.INFO)
     app.logger.addHandler(handler)
-
