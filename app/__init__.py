@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
-
+import time
 import logging
 from logging.handlers import TimedRotatingFileHandler
 
@@ -16,18 +16,17 @@ def create_app(config_name):
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
 
-    # todo delete after end
-    app.debug = True
-    app.use_debugger = False
-    app.use_reloader = False
-
+    # for debug in PyCharm
     # app.debug = False
-    # app.threaded = True
+    # app.use_debugger = True
+    # app.use_reloader = True
+    app.debug = True
 
     bootstrap.init_app(app)
     db.init_app(app)
     init_logging(app)
-    app.logger.info("Init logging.")
+    current_day = time.ctime()
+    app.logger.info(f"Init logging: {current_day}")
 
     # import blueprint
     from .main import main as main_blueprint
@@ -61,6 +60,6 @@ def init_logging(app):
 
     # getLogger('__name__') - decorators loggers to file / werkzeug loggers to stdout
     # getLogger('werkzeug') - werkzeug loggers to file / nothing to stdout
-    logging.getLogger('__name__')
+    logging.getLogger('werkzeug')
     handler.setLevel(logging.INFO)
     app.logger.addHandler(handler)

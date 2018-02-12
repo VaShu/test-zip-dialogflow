@@ -5,6 +5,7 @@ from .. import main
 from .index import *
 from .zip import *
 from .bot import *
+from .webhook import *
 
 
 @main.route('/favicon.ico')
