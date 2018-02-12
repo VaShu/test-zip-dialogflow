@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}ZipTest App - Zip{% endblock %}
+
+{% block page_content %}
+<h2 id="comments">Point</h2>
+<div class="comment-form">
+    {% if latitude %}
+    <h3>You zip point {{ latitude }} and {{ longitude }} </h3>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers={{ latitude | float }},{{ longitude | float }}" alt="map">
+    <img src="https://maps.googleapis.com/maps/api/streetview?size=700x300&location={{ latitude | float }},{{ longitude | float }}" alt="street view">
+
+    {% else %}
+    <div>Zip not found</div>
+    {% endif %}
+</div>
+{% endblock %}

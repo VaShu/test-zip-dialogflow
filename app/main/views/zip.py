@@ -1,20 +1,24 @@
-from flask import render_template
+from flask import render_template, request
 from app.main.forms import ZipForm
+from app.models import Zip
 from .. import main
 
 
-@main.route('/zip/frame', methods=['GET', 'POST'])
-def zip_frame():
+@main.route('/zip', methods=['GET', 'POST'])
+def zip():
     form = ZipForm()
-    # resp = make_response(redirect(url_for('.index')))
-    # return resp
-    return render_template('zip.html', form=form)
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            current_zip = form.postal_code.data
+            zip = Zip.query.filter_by(postal_code=current_zip).first()
+            if zip is not None:
+                latitude = zip.latitude
+                longitude = zip.longitude
+                return render_template('point.html', form=form, latitude=latitude, longitude=longitude)
+            else:
+                latitude = 0
+                longitude = 0
+                return render_template('point.html', form=form, latitude=latitude, longitude=longitude)
 
-
-@main.route('/zip/api', methods=['GET', 'POST'])
-def zip_api():
-    form = ZipForm()
-    # resp = make_response(redirect(url_for('.index')))
-    # return resp
-    return render_template('zip.html', form=form)
-
+    else:
+        return render_template("zip.html", form=form)

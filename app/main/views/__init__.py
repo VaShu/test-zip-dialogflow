@@ -1,10 +1,11 @@
 from flask import current_app as app, send_from_directory
 import os
-
+from .. import main
 
 from .index import *
-from .bot import *
 from .zip import *
+from .bot import *
+from .webhook import *
 
 
 @main.route('/favicon.ico')
