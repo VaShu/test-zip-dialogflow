@@ -7,9 +7,6 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data.sqlite3')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
-    POSTS_PER_PAGE = 5
-    FOLLOWERS_PER_PAGE = 50
-    COMMENTS_PER_PAGE = 30
     GMAP_API_KEY = 'AIzaSyD5nH6slilY65DTQOMq0T5306Ak100ywdE'
     LOGGING_PATH = 'logs/app.log'
 #    LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
