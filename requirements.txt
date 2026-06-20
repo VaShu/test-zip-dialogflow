@@ -1,5 +1,5 @@
 alembic==0.9.7
-bleach==3.3.0
+bleach==6.4.0
 cachetools==2.0.1
 certifi>=2024.7.04
 chardet==3.0.4
